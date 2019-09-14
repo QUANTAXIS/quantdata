@@ -1,0 +1,13 @@
+dist
+build
+
+*.pyx
+*.pyc
+
+.idea
+
+# 虚拟环境
+venv
+
+
+
