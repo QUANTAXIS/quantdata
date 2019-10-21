@@ -5,7 +5,7 @@ quantdata support
 
 
 class QuantPlatform:
-    """ 构建量化平台 """
+    """ 构建量化数据平台 """
 
     def __init__(self, owner, support_platform, method, var="future", **kwargs):
         """
@@ -19,6 +19,7 @@ class QuantPlatform:
         self.connection_link = ""
         self._support_platform = support_platform
         self._method = method
+        self._var = var
 
     @property
     def method(self):

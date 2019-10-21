@@ -1,7 +1,7 @@
 """
 package explanation
 
-* orm  存储各家数据关系的映射
+* model  存储各家数据关系的映射
 * operation 处理底层的增删改查
 * http 处理各个客户端的数据联动
 * exception quantdata的异常机制
