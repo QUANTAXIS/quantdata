@@ -15,3 +15,5 @@ helpers.py 辅助函数入口
 __version__ = "0.1"
 __author__ = "yutiansut && somewheve"
 
+
+from quantdata.quant import QuantPlatform

@@ -7,7 +7,7 @@ quantdata support
 class QuantPlatform:
     """ 构建量化平台 """
 
-    def __init__(self, owner, support_platform, method, var="ctp", **kwargs):
+    def __init__(self, owner, support_platform, method, var="future", **kwargs):
         """
             * owner: 当前你使用的平台
             * support_platform:  需要支持的平台数据
@@ -17,7 +17,17 @@ class QuantPlatform:
         """
         self.owner = owner
         self.connection_link = ""
-        self.support_platform = support_platform
+        self._support_platform = support_platform
+        self._method = method
+
+    @property
+    def method(self):
+        return self._method
+
+    @property
+    def support_platform(self):
+        return self._support_platform
+
 
     def initialize_database_config(self, info):
         """ 手动初始化数据库配置 """
