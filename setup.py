@@ -8,5 +8,4 @@ setup(
     description="quant data support of full platform",
     packages=packages,
     install_requires=['pandas'],
-
 )

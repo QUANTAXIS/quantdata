@@ -11,9 +11,10 @@ nextgenereation data solution
 - 类名大写开头, 驼峰命名  class XxxYxxx()
 - 函数名 小写+下划线     def  xxx_xxx()
 - 变量需要annotation
-- 采用动宾结构
+- 命名规则采用动宾结构
 - 外部不可直接修改属性，需要通过set方法
 - 属性访问通过property修饰
+- 完整的函数注释, 同时参数需要通过 * age: 年龄  这样进行函数注解
 
 ## 快速使用
 

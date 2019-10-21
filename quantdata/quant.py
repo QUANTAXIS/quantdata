@@ -28,15 +28,29 @@ class QuantPlatform:
     def support_platform(self):
         return self._support_platform
 
-
     def initialize_database_config(self, info):
-        """ 手动初始化数据库配置 """
+        """
+        手动初始化数据库配置，创建数据库客户端
+        * info: 数据库连接信息
+        """
 
     def initialize_http_config(self, info):
-        """ 初始化http接口信息 """
+        """
+        初始化http接口信息
+        * info：包含http的认证信息
+        """
+
+    def initialize_client_config(self, info):
+        """
+        针对客户端[ricequant, jq] 或者 tcp连接 等进行初始化
+        * info: 包含基本的客户端认证信息
+        """
 
     def measure_interface(self) -> bool:
-        """ 测试接口是否正常进行工作 """
+        """
+        测试接口是否正常进行工作
+        返回True or False
+        """
         if self.connection_link:
             return True
         return False
