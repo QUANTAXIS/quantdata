@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass(init=False)
 class TheBasicModel:
     """ 基本模型 """
 

@@ -40,3 +40,17 @@ data = platform.fetch_data(local_symbol="ap1910.SHFE", level="1min", df=True)
 - 外部不可直接修改属性，需要通过set方法
 - 属性访问通过property修饰
 - 完整的函数注释, 同时参数需要通过 * age: 年龄  这样进行函数注解
+
+## 当前支持平台 || 待支持平台 
+
+当前已经支持平台
+- None  
+
+暂未支持平台
+- quantaxis
+- ctpbee
+- vnpy
+- rice_quant
+- join_quant
+
+如果你有想支持的数据模型请添加issue或者 发送邮件联系沟通 
