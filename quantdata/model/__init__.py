@@ -4,19 +4,21 @@
 
 created at 2019-10-21
 """
-# 支持平台, 排名不分先后 按照字母顺序
-__support_platform__ = ['ctpbee', 'join_quant', 'quantaxis', 'rice_quant', 'vnpy']
+# 支持平台, 排名不分先后
+__support_platform__ = ['ctpbee', 'join_quant', 'quantaxis', 'rice_quant', 'vnpy', "tqsdk"]
 
 from quantdata.model.ctpbee import CBarModel, CTickModel
 from quantdata.model.join_quant import JBarModel, JTickModel
 from quantdata.model.rice_quant import RBarModel, RTickModel
 from quantdata.model.quantaxis import QBarModel, QTickModel
 from quantdata.model.vnpy import VBarModel, VTickModel
+from quantdata.model.tqsdk import TBarModel, TTickModel
 
 __all__ = (
     CTickModel, CBarModel,
     JTickModel, JBarModel,
     RTickModel, RBarModel,
     QTickModel, QBarModel,
-    VTickModel, VBarModel
+    VTickModel, VBarModel,
+    TBarModel, TTickModel
 )

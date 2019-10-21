@@ -11,7 +11,8 @@ mapping = {
     "quantaxis": (QBarModel, QTickModel),
     "ctpbee": (CBarModel, CTickModel),
     "join_quant": (JBarModel, JTickModel),
-    "rice_quant": (RBarModel, RTickModel)
+    "rice_quant": (RBarModel, RTickModel),
+    "tqsdk": (TBarModel, TTickModel)
 }
 
 

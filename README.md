@@ -52,5 +52,6 @@ data = platform.fetch_data(local_symbol="ap1910.SHFE", level="1min", df=True)
 - vnpy
 - rice_quant
 - join_quant
+- tqsdk
 
 如果你有想支持的数据模型请添加issue或者 发送邮件联系沟通 
