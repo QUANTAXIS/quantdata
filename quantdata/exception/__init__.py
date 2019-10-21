@@ -4,4 +4,10 @@
 """
 
 
+class QuantDatabaseConnectionException(Exception):
+    """ 连接数据库异常 """
+    pass
 
+
+class QueryException(Exception):
+    """ 数据库查询异常 """

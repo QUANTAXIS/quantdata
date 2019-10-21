@@ -1,10 +1,15 @@
+# 发布相关
 dist
 build
+src
 
+# 编译产生的文件
 *.pyx
 *.pyc
 
+# ide相关
 .idea
+.vscode
 
 # 虚拟环境
 venv

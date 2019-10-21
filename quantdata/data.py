@@ -21,11 +21,17 @@ class DataStructure:
         """ 转换到指定平台数据并返回新的实例 """
         return None
 
-    def as_mapping(self) -> Mapping:
+    def init_params(self, **params):
+        """ 根据参数来处理数据 """
+
+    def to_mapping(self) -> Mapping:
         """ 以字典的形式进行输出 """
 
-    def as_df(self) -> DataFrame:
+    def to_df(self) -> DataFrame:
         """ 以dataframe形式输出 """
 
-    def as_json(self) -> Text:
+    def to_json(self) -> Text:
         """ 以json的形式进行输出 """
+
+    def to_csv(self, filepath):
+        """ 导出为csv文件 """
