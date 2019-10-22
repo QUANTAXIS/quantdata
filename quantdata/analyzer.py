@@ -18,4 +18,6 @@ mapping = {
 
 class Analyzer:
     """ 分析器 """
-    pass
+
+
+

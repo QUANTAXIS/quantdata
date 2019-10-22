@@ -1,7 +1,7 @@
 """
 ctpbee数据模型
 """
-from quantdata.model.base import TheBasicModel
+from quantdata.model.base import TheBasicModel, BarBaseModel, TickBaseModel
 
 
 class CTickModel(TheBasicModel):
@@ -9,9 +9,10 @@ class CTickModel(TheBasicModel):
 
 
 class CBarModel(TheBasicModel):
-    high_price: float = 0
-    low_price: float = 0
-    close_price: float = 0
-    open_price: float = 0
-    volume: int = 0
-    local_symbol: int = None
+    high_price = BarBaseModel.high
+    low_price = BarBaseModel.low
+    close_price = BarBaseModel.close
+    open_price = BarBaseModel.open
+    volume = BarBaseModel.volume
+    local_symbol = BarBaseModel.local_symbol
+    datetime = BarBaseModel.datetime

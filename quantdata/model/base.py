@@ -16,3 +16,19 @@ class TheBasicModel:
 
     def parse_structure(self):
         """ 解析结构 """
+
+
+class TickBaseModel:
+    local_symbol = "local_symbol"
+    high = "high"
+
+
+class BarBaseModel:
+    local_symbol = "local_symbol"
+    high = "high"
+    low = "low"
+    open = "open"
+    close = "close"
+    volume = "volume"
+    datetime = "datetime"
+    interest = "interest"
