@@ -1,3 +1,8 @@
+"""
+    存放了quantdata里面的基准模型
+
+"""
+
 from dataclasses import dataclass
 
 

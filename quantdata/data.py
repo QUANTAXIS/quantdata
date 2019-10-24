@@ -10,8 +10,8 @@ from typing import Text, Mapping
 from pandas import DataFrame
 
 
-class DataStructure:
-    """ 通用数据结构 """
+class DataEntity:
+    """ 通用数据实体 """
 
     def __init__(self, common):
         """ 可以是数据库中的数据, 也可以是http接口传回来的数据 """
