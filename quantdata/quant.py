@@ -1,7 +1,10 @@
 """
 quantdata support
-面向数据库和http接口的支持
+数据支持
 """
+from quantdata.client import TqsdkClient
+from quantdata.data_processor import DataConvter
+from quantdata.parse import ParamsInterpreter
 
 
 class QuantPlatform:
@@ -9,17 +12,41 @@ class QuantPlatform:
 
     def __init__(self, owner, support_platform, method, var="future", **kwargs):
         """
-            * owner: 当前你使用的平台
-            * support_platform:  需要支持的平台数据
-            * method: 连接属性 [http, tcp, mysql, mongo, sqlite]
+        平台类 这应该是一个需要拥有完整向外公开的API
 
-            * var： 数据种类，默认为ctp期货数据，
+        * owner: 当前你使用的平台
+        * support_platform:  需要支持的平台数据
+        * method: 连接属性 [
+            http:
+                QA
+            client: 
+                tqsdk,rqdata
+            tcp:
+                looper_me
+            database:
+                mysql, 
+                mongo, 
+                sqlite
+            ]
+        * var： 数据种类，默认为ctp期货数据，
         """
         self.owner = owner
         self.connection_link = ""
         self._support_platform = support_platform
         self._method = method
+        
+        """ 创建一个参数解释器 """
+        self._converter = DataConvter(self.owner, self._support_platform)
+        
+        """ 创建一个数据转换器 """
+        self._interpreter = ParamsInterpreter(self._support_platform)
         self._var = var
+
+        """ 判断client为啥 """
+        if method == "client":
+            if self._support_platform == "tqsdk":
+                self.client = TqsdkClient()
+      
 
     @property
     def method(self):
@@ -59,12 +86,34 @@ class QuantPlatform:
     def fetch_data(self, local_symbol, level, start=None, end=None, **kwargs):
         """
         此接口应该作为唯一取数据的通道
-        获取数据，值得注意的是第一次取到的数据应该被载入成一个对象,
-        然后通过kwargs中的参数进行处理,返回被处理过的数据
-
+        先通过参数解析转换为目标平台调用可以接受的方式
+        然后获取数据，值得注意的是第一次取到的是初始数据,
+        之后通过kwargs中的参数进行处理,返回被处理过的数据 --> 目标平台数据
         * local_symbol: 本地合约代码名称
         * level: 数据级别 [tick, 1min-60min, 1h-nh, day, week,year]
         * start: 开始日期
         * end: 截至日期
-        * kwargs: 数据处理
+        * kwargs: 数据处理模块参数
         """
+
+        params = dict(
+            local_symbol=local_symbol,
+            level = level,
+            start=start,
+            end = end,
+        )
+
+        args, dicts = self._interpreter.parse(params)
+        
+        """ 根据统一API调用数据 """ 
+        _data = self.client.get(*args, **dicts)
+        # 进行转换
+        """
+        Get it to data converter
+        """
+        return self._converter.coverter(_data, **kwargs)
+
+
+
+
+        

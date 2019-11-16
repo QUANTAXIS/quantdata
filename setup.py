@@ -7,5 +7,5 @@ setup(
     name="quantdata",
     description="quant data support of full platform",
     packages=packages,
-    install_requires=['pandas'],
+    install_requires=['pandas','tqsdk'],
 )

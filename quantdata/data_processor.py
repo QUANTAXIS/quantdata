@@ -1,4 +1,9 @@
 """
+数据处理器
+"""
+
+
+"""
 数据模块
 
 决定了数据的API,
@@ -35,3 +40,21 @@ class DataEntity:
 
     def to_csv(self, filepath):
         """ 导出为csv文件 """
+
+
+class DataConvter(object):
+
+    def __init__(self, owner, support_platform):
+        """
+        初始化数据转换转换器
+        """
+        self._owner = owner
+        self._support_platform = support_platform
+
+
+    def coverter(self, data) -> DataEntity:
+        """ 
+        开始进行转换 
+        """ 
+        
+        return 
