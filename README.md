@@ -8,14 +8,12 @@ nextgenereation data solution
 ```
 from quantdata import QuantPlatform
 
-# 创建实例
-platform = QuantPlatform(owner="ctpbee", support_platform="quantaxis", method="http", var="future")
-
-# 初始化设置 
-platform.initialize_http_config()
+# 创建实例, 拥有数据方为tqsdk, 需要支持的为ctpbee,也就是说把数据转换到---> ctpbee
+platform = QuantPlatform(owner="tqsdk", support_platform="ctpbee", method="client", var="future")
 
 # 获取数据
-data = platform.fetch_data(local_symbol="ap1910.SHFE", level="1min", df=True)
+data = platform.fetch_data(local_symbol="SHFE.rb1910",level="1min", length=5000).to_df()
+print(data)
 
 ```
 

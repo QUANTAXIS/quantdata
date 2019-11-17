@@ -41,6 +41,7 @@ class TqsdkClient(LocalClient):
 
         # tick数据
         if params.get("level") == "tick":
+            del params['level']
             return self.api.get_tick_serial(*argsm, **params)
         
         # 分钟线数据
