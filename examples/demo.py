@@ -1,7 +1,9 @@
 from quantdata import  QuantPlatform
 
-platform = QuantPlatform(owner="ctpbee", support_platform="tqsdk", method="client")
+platform = QuantPlatform(owner="tqsdk", support_platform="ctpbee", method="client")
 
 from time import sleep
 sleep(3)
-platform.fetch_data(local_symbol="rb2001",level="1min")
+data = platform.fetch_data(local_symbol="SHFE.rb1910",level="1min", length=5000).to_df()
+
+print(data)

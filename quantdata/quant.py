@@ -14,7 +14,7 @@ class QuantPlatform:
         """
         平台类 这应该是一个需要拥有完整向外公开的API
 
-        * owner: 当前你使用的平台
+        * owner: 数据提供平台
         * support_platform:  需要支持的平台数据
         * method: 连接属性 [
             http:
@@ -39,14 +39,20 @@ class QuantPlatform:
         self._converter = DataConvter(self.owner, self._support_platform)
         
         """ 创建一个数据转换器 """
-        self._interpreter = ParamsInterpreter(self._support_platform)
+        self._interpreter = ParamsInterpreter(self.owner)
         self._var = var
 
         """ 判断client为啥 """
         if method == "client":
-            if self._support_platform == "tqsdk":
+            if self.owner == "tqsdk":
                 self.client = TqsdkClient()
       
+    def init_app(self, app):
+        """
+        This function was used to concat ctpbee with quantdata
+        """
+        self.app = app
+        self.app.tools['quantdata'] = self
 
     @property
     def method(self):
@@ -83,7 +89,7 @@ class QuantPlatform:
             return True
         return False
 
-    def fetch_data(self, local_symbol, level, start=None, end=None, **kwargs):
+    def fetch_data(self, local_symbol, level, start=None, end=None, length=None, **kwargs):
         """
         此接口应该作为唯一取数据的通道
         先通过参数解析转换为目标平台调用可以接受的方式
@@ -101,6 +107,7 @@ class QuantPlatform:
             level = level,
             start=start,
             end = end,
+            length=length
         )
 
         args, dicts = self._interpreter.parse(params)
@@ -111,7 +118,7 @@ class QuantPlatform:
         """
         Get it to data converter
         """
-        return self._converter.coverter(_data, **kwargs)
+        return self._converter.coverter(_data, level, **kwargs)
 
 
 
