@@ -7,5 +7,5 @@ setup(
     name="quantdata",
     description="data support of full quant platform",
     packages=packages,
-    install_requires=['pandas', 'tqsdk'],
+    install_requires=['pandas','tqsdk','ctpbee'],
 )

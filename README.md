@@ -28,13 +28,12 @@ data = platform.fetch_data(local_symbol="ap1910.SHFE", level="1min", df=True)
 那么如果实现我们想要的功能，请看以下流程，还请各位大佬指点 : 
 
 1. 收到数据指令，经过指令转换, 立即从数据源中取到数据。
-2. 拿到数据之后将数据拿到Analyzer<分析器>里面经过分析，拿到分析结果,
-3. 然后再将数据，以及分析结果拿到processor里面进行处理，拿到DataEntity<数据实体>, 返回给用户。
-4. 然后用户可以通过数据实体的接口拿到想要的数据
+2. 然后再将数据，以及分析结果拿到processor里面进行处理，拿到`DataEntity`<数据实体>, 返回给用户。
+3. 然后用户可以通过数据实体的接口拿到想要的数据
 
 
 在这样的流程下面各家数据的兼容只需要实现一个映射即可！
-> 具体的映射原理我是按照设计一个公有的结构，然后在各家映射里面添加公有数据映射。
+> 具体的映射原理我是按照设计一个公有的结构，然后在各家映射里面添加公有数据映射，缺失字段用`missing`代替。
  
 如果你有什么好的意见 请邮件与我联系, 邮件地址: somewheve@gmail.com
 
@@ -56,17 +55,26 @@ data = platform.fetch_data(local_symbol="ap1910.SHFE", level="1min", df=True)
 - 属性访问通过property修饰
 - 完整的函数注释, 同时参数需要通过 * age: 年龄  这样进行函数注解
 
+
+## todo
+- 数据转换模型代码
+- 指令解析
+- 数据库模型
+- http模型
+
+> 希望大佬看到这个项目参与尽来啊 ！！期待你的加入
+
 ## 当前支持平台 || 待支持平台 
 
 当前已经支持平台
 - None  
 
 暂未支持平台
-- quantaxis
-- ctpbee
-- vnpy
-- rice_quant
-- join_quant
+- `quantaxis`
+- `ctpbee`
+- `vnpy`
+- `rice_quant`
+- `join_quant`
 - [tqsdk](https://github.com/shinnytech/tqsdk-python)  // 免费提供tick，k线数据哟
 
 如果你有想支持的数据模型请添加issue或者 发送邮件联系沟通 
