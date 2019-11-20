@@ -33,7 +33,7 @@ class TqsdkClient(LocalClient):
         
         self.api = TqApi()
         while True:
-            sleep(60)
+            self.api.wait_update()
 
 
     def get(self, *argsm, **params):
