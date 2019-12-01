@@ -5,7 +5,8 @@ packages = find_packages()
 setup(
     author="yutiansut && somewheve",
     name="quantdata",
-    description="data support of full quant platform",
+    version=0.2,
+    description="quant data support of full platform",
     packages=packages,
     install_requires=['pandas','tqsdk','ctpbee'],
 )

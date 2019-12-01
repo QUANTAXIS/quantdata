@@ -97,8 +97,6 @@ class DataConvter(object):
         """ 
         开始进行转换 
         """
-        print("data: ", data)
-
         own_model, des_model =  Analyzer.get_model(self._owner, level, self._support_platform)
 
         if isinstance(data, DataFrame):

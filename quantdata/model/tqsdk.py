@@ -4,8 +4,24 @@ from quantdata.model.base import TheBasicModel, TickBaseModel, BarBaseModel
 
 
 class TTickModel(TheBasicModel):
-    pass
+    
+    volume = TickBaseModel.volume
+    last_price = TickBaseModel.last
+    open_price = TickBaseModel.open
+    average = TickBaseModel.average
+    highest = TickBaseModel.high
+    lowest = TickBaseModel.low
+    
+    ask_price1 = TickBaseModel.ask_price_1
+    ask_volume1 = TickBaseModel.ask_volume_1
+    bid_price1 = TickBaseModel.bid_price_1
+    bid_volume1 = TickBaseModel.bid_volume_1
+    open_interest = TickBaseModel.interest
 
+    datetime = TickBaseModel.datetime
+
+
+    
 
 class TBarModel(TheBasicModel):
     # *id: int, 1234(k线序列号)

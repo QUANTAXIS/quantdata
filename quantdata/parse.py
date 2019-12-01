@@ -18,4 +18,4 @@ class ParamsInterpreter:
                 if not length:
                      return [local_symbol, get_seconds(level)], {}
                 return [local_symbol, get_seconds(level), length], {}
-        return [local_symbol, length], {}
+        return [local_symbol, length], {"level":"tick"}

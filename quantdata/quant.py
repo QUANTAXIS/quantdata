@@ -16,18 +16,23 @@ class QuantPlatform:
 
         * owner: 数据提供平台
         * support_platform:  需要支持的平台数据
-        * method: 连接属性 [
+        * method: 连接属性 
+        [
             http:
                 QA
+                looper_me
             client: 
-                tqsdk,rqdata
+                tqsdk
+                rqdatac
+                tushare
+
             tcp:
                 looper_me
             database:
                 mysql, 
                 mongo, 
-                sqlite
-            ]
+                sqlite,
+        ]
         * var： 数据种类，默认为ctp期货数据，
         """
         self.owner = owner

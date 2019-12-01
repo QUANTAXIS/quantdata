@@ -33,7 +33,7 @@ class TqsdkClient(LocalClient):
         
         self.api = TqApi()
         while True:
-            sleep(60)
+            self.api.wait_update()
 
 
     def get(self, *argsm, **params):
@@ -41,6 +41,7 @@ class TqsdkClient(LocalClient):
 
         # tick数据
         if params.get("level") == "tick":
+            del params['level']
             return self.api.get_tick_serial(*argsm, **params)
         
         # 分钟线数据
