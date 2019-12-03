@@ -39,10 +39,10 @@ class QuantPlatform:
         self.connection_link = ""
         self._support_platform = support_platform
         self._method = method
-        
+
         """ 创建一个参数解释器 """
         self._converter = DataConvter(self.owner, self._support_platform)
-        
+
         """ 创建一个数据转换器 """
         self._interpreter = ParamsInterpreter(self.owner)
         self._var = var
@@ -51,7 +51,7 @@ class QuantPlatform:
         if method == "client":
             if self.owner == "tqsdk":
                 self.client = TqsdkClient()
-      
+
     def init_app(self, app):
         """
         This function was used to concat ctpbee with quantdata
@@ -109,23 +109,18 @@ class QuantPlatform:
 
         params = dict(
             local_symbol=local_symbol,
-            level = level,
+            level=level,
             start=start,
-            end = end,
+            end=end,
             length=length
         )
 
         args, dicts = self._interpreter.parse(params)
-        
-        """ 根据统一API调用数据 """ 
+
+        """ 根据统一API调用数据 """
         _data = self.client.get(*args, **dicts)
         # 进行转换
         """
         Get it to data converter
         """
         return self._converter.coverter(_data, level, **kwargs)
-
-
-
-
-        
