@@ -10,7 +10,6 @@ class ParamsInterpreter:
     
     def parse(self, kwargs: dict):
         if self._owner == "tqsdk":
-            print("tqsdk参数解析" )
             level = kwargs.get("level")
             local_symbol = kwargs.get("local_symbol")
             length = kwargs.get("length")

@@ -5,6 +5,7 @@ from threading import local, Thread
 
 locale = local()
 
+
 class LocalClient:
 
     def get(self):
@@ -17,7 +18,7 @@ class LocalClient:
     def set(self):
         """
             设置数据
-        """  
+        """
         raise NotImplementedError
 
 
@@ -28,13 +29,12 @@ class TqsdkClient(LocalClient):
         self.p = Thread(target=self.init_api, args=())
         self.p.start()
         self.api = None
-        
+
     def init_api(self):
-        
+
         self.api = TqApi()
         while True:
             self.api.wait_update()
-
 
     def get(self, *argsm, **params):
         """ 调用他们的历史数据 """
@@ -42,13 +42,12 @@ class TqsdkClient(LocalClient):
         # tick数据
         if params.get("level") == "tick":
             del params['level']
-            return self.api.get_tick_serial(*argsm, **params)
-        
+            temp = self.api.get_tick_serial(*argsm, **params)
+            return temp
+
         # 分钟线数据
         if params.get("level") != "tick":
             return self.api.get_kline_serial(*argsm, **params)
 
     def set(self):
         pass
-    
-

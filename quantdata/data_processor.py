@@ -2,7 +2,6 @@
 数据处理器
 """
 
-
 """
 数据模块
 
@@ -14,8 +13,8 @@ from typing import Text, Mapping
 
 from pandas import DataFrame
 
-
 from quantdata.analyzer import Analyzer
+
 
 class DataEntity:
     """ 
@@ -27,8 +26,17 @@ class DataEntity:
         """ 可以是数据库中的数据, 也可以是http接口传回来的数据 """
         self.common = common
 
+        self.type = type(common)
+
     def to_mapping(self) -> Mapping:
         """ 以字典的形式进行输出 """
+
+        if self.type == DataFrame:
+            return
+        elif self.type == dict:
+            return
+        elif self.type == str:
+            return
 
     def to_df(self) -> DataFrame:
         """ 以dataframe形式输出 """
@@ -64,11 +72,11 @@ class DataConvter(object):
         """
         own_columns = origin_data.columns
         # 修改  
-    
+
         attrs = {}
-        refact ={}
+        refact = {}
         # 反转属性
-        for i,v in support_model.__dict__.items():
+        for i, v in support_model.__dict__.items():
             if not i.startswith("__"):
                 attrs[v] = i
         for x in own_columns:
@@ -76,7 +84,7 @@ class DataConvter(object):
                 refact[x] = getattr(own_model, x)
             except AttributeError as e:
                 continue
-        re_columns = {i:attrs[v] for i,v in refact.items()}
+        re_columns = {i: attrs[v] for i, v in refact.items()}
 
         origin_data = origin_data.rename(columns=re_columns)
         return origin_data
@@ -97,7 +105,7 @@ class DataConvter(object):
         """ 
         开始进行转换 
         """
-        own_model, des_model =  Analyzer.get_model(self._owner, level, self._support_platform)
+        own_model, des_model = Analyzer.get_model(self._owner, level, self._support_platform)
 
         if isinstance(data, DataFrame):
             temp = self.process_dataframe(origin_data=data, own_model=own_model, support_model=des_model)
